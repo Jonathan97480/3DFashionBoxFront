@@ -93,7 +93,7 @@ function EditGameInfo(_a) {
     var _c = react_1.useState(""), video = _c[0], setVideo = _c[1];
     var t = react_multi_lang_1.useTranslation();
     var BASE_VIDEO_URL = 'http://localhost:8080/video/';
-    var BASE_API_URL = 'http://localhost:8080/api/';
+    var BASE_API_URL = "http://83.198.193.155:8080/api/";
     react_1.useLayoutEffect(function () {
         if (video != "" + BASE_VIDEO_URL + rowData.mp4name + ".mp4") {
             setVideo("" + BASE_VIDEO_URL + rowData.mp4name + ".mp4");

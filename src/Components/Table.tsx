@@ -51,6 +51,7 @@ export default function Table(props: TableProps) {
     const [isFilter, setIsFilter] = React.useState(false);
     const [alert, setAlert] = React.useState<AlertProps>(defaultAlertProps);
     const [editGameInfo, setEditGameInfo] = React.useState<EditGameInfoProps>(defaultDataEdit);
+    const ADREESE_API = "http://83.198.193.155:8080/api/";
 
     const t = useTranslation();
     const title = t('table.title');
@@ -68,7 +69,7 @@ export default function Table(props: TableProps) {
         if (value.length < 3) return;
 
         try {
-            const response = await fetch('http://localhost:8080/api/findGame/' + value);
+            const response = await fetch(`${ADREESE_API}findGame/${value}`);
             const json = await response.json();
             if (json.success) {
                 setData(json.data.games);
@@ -97,7 +98,7 @@ export default function Table(props: TableProps) {
         if (isFilter) return;
         setLoading(true);
         try {
-            const response = await fetch('http://localhost:8080/api/gameList/' + p + '/' + pagination.limit,);
+            const response = await fetch(`${ADREESE_API}gameList/` + p + '/' + pagination.limit,);
             const json = await response.json();
             if (json.success) {
                 setPagination({ page: p, limit: pagination.limit, totalPages: json.data.totalPages });
@@ -227,7 +228,7 @@ export default function Table(props: TableProps) {
     const handleFilter = async (value: number) => {
 
         try {
-            const response = await fetch('http://localhost:8080/api/filterGame/' + value);
+            const response = await fetch(`${ADREESE_API}filterGame/` + value);
             const json = await response.json();
             if (json.success) {
                 setIsFilter(true);
@@ -258,7 +259,7 @@ export default function Table(props: TableProps) {
 
         });
 
-        fetch(`http://localhost:8080/api/deleteGame/${row.pid}`, {
+        fetch(`${ADREESE_API}deleteGame/${row.pid}`, {
             method: 'DELETE',
         })
             .then((response) => response.json())
@@ -317,7 +318,7 @@ export default function Table(props: TableProps) {
 
         const is_show = !row.is_show;
         try {
-            const response = await fetch('http://localhost:8080/api/setIsShow/' + row.pid + '/' + is_show);
+            const response = await fetch(`${ADREESE_API}setIsShow/` + row.pid + '/' + is_show);
             const json = await response.json();
             if (json.success) {
                 const newData = data.map((item) => {
@@ -367,7 +368,7 @@ export default function Table(props: TableProps) {
 
         const is_favourite = !row.is_favourite;
         try {
-            const response = await fetch('http://localhost:8080/api/setIsFav/' + row.pid + '/' + is_favourite);
+            const response = await fetch(`${ADREESE_API}setIsFav/` + row.pid + '/' + is_favourite);
             const json = await response.json();
             if (json.success) {
                 const newData = data.map((item) => {

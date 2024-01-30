@@ -72,6 +72,7 @@ function Table(props) {
     var _d = react_1["default"].useState(false), isFilter = _d[0], setIsFilter = _d[1];
     var _e = react_1["default"].useState(Alert_1.defaultAlertProps), alert = _e[0], setAlert = _e[1];
     var _f = react_1["default"].useState(EditGameInfo_1.defaultDataEdit), editGameInfo = _f[0], setEditGameInfo = _f[1];
+    var ADREESE_API = "http://83.198.193.155:8080/api/";
     var t = react_multi_lang_1.useTranslation();
     var title = t('table.title');
     react_1.useEffect(function () {
@@ -93,7 +94,7 @@ function Table(props) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fetch('http://localhost:8080/api/findGame/' + value)];
+                    return [4 /*yield*/, fetch(ADREESE_API + "findGame/" + value)];
                 case 2:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -130,7 +131,7 @@ function Table(props) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fetch('http://localhost:8080/api/gameList/' + p + '/' + pagination.limit)];
+                    return [4 /*yield*/, fetch(ADREESE_API + "gameList/" + p + '/' + pagination.limit)];
                 case 2:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -251,7 +252,7 @@ function Table(props) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch('http://localhost:8080/api/filterGame/' + value)];
+                    return [4 /*yield*/, fetch(ADREESE_API + "filterGame/" + value)];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -285,7 +286,7 @@ function Table(props) {
                 onScreen: true
             }
         });
-        fetch("http://localhost:8080/api/deleteGame/" + row.pid, {
+        fetch(ADREESE_API + "deleteGame/" + row.pid, {
             method: 'DELETE'
         })
             .then(function (response) { return response.json(); })
@@ -344,7 +345,7 @@ function Table(props) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fetch('http://localhost:8080/api/setIsShow/' + row.pid + '/' + is_show)];
+                    return [4 /*yield*/, fetch(ADREESE_API + "setIsShow/" + row.pid + '/' + is_show)];
                 case 2:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -403,7 +404,7 @@ function Table(props) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 4, , 5]);
-                    return [4 /*yield*/, fetch('http://localhost:8080/api/setIsFav/' + row.pid + '/' + is_favourite)];
+                    return [4 /*yield*/, fetch(ADREESE_API + "setIsFav/" + row.pid + '/' + is_favourite)];
                 case 2:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
