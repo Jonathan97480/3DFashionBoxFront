@@ -1,0 +1,84 @@
+/* Style du conteneur modal */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Style du titre */
+.modal h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* Style des côtés gauche et droit du conteneur */
+.modal_contenair {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style des côtés gauche et droit séparés */
+.left-side,
+.right-side {
+    width: 48%;
+}
+
+/* Style des champs de formulaire */
+.left-side span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.left-side label {
+    font-weight: bold;
+}
+
+.left-side input,
+.left-side select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* Style du bouton avancé */
+.advanced-options button {
+    margin-top: 10px;
+}
+
+/* Style des boutons */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Style du lecteur vidéo */
+.right-side video {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Style des boutons en dessous du lecteur vidéo */
+.right-side button {
+    margin-top: 10px;
+}
+
+/* Style du pied de page du modal */
+.modal button {
+    margin-top: 20px;
+    background-color: #dc3545;
+}

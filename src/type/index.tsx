@@ -1,0 +1,1 @@
+export { type GameDataType } from './GameDataType';

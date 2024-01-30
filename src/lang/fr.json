@@ -1,0 +1,171 @@
+
+
+    {
+        "table":{
+            "title": "LISTE DE JEUX POUR CARTE MERE H3 3D FASHION",
+            "search":{
+                "placeholder": "Rechercher un jeu",
+                "button": "Rechercher"
+
+            } ,
+            "filter":{
+                "neoGeo": "NeoGeo",
+                "fba": "arcade",
+                "nes": "Nes",
+                "snes": "Super nes",
+                "gba": "Game boy advance",
+                "gbc":"Game boy color",
+                "n64": "Nintendo 64",
+                "psx": "Playstation 1",
+                "md": "Megadrive"
+            },
+            "rows":{
+                "action":"Action",
+                "emu_id":"Console",
+                "title_en":"Titre du jeu",
+                "is_show":"Visible",
+                "is_favourite":"Favoris",
+                "dim_type":"Type",
+                "category":"Catégorie"
+            }
+        },
+
+        "home":{
+            "addGame": "Ajouter un jeu",
+            "addGameSdCardInLib": "Ajouter les jeux de la carte SD dans la bibliothèque"
+
+        },
+        "global":{
+            "loading": "Chargement des données...",
+            "buttons":{
+                "save": "Enregistrer",
+                "cancel": "Annuler",
+                "delete": "Supprimer",
+                "close": "Fermer",
+                "yes": "Oui",
+                "no": "Non",
+                "closeAdvancedMenu": "Fermer le menu avancé",
+                "openAdvancedMenu": "Ouvrir le menu avancé",
+                "changeVideoDemo": "Changer la vidéo de démonstration",
+                "updateRom": "Mettre à jour la rom"
+
+            },
+            "game":{
+                "namegame": "Nom du jeu",
+                "placeholder": "Nom du jeu",
+                "gameTime": "Temps de jeu",
+                "placeholderTime": "Temps de jeu",
+                "dificulty": "Difficulté",
+                "loadTime": "Temps de chargement",
+                "placeholderLoadTime": "Temps de chargement",
+                "placeholderDificulty": "Difficulté",
+                "numberCredit": "Nombre de crédit",
+                "placeholderNumberCredit": "Nombre de crédit au lancement du jeu",
+                "titleGameOtherLang": "Titre du jeu dans une autre langue",
+                "placeholderJapan": "Titre du jeu en japonais",
+                "placeholderKorean": "Titre du jeu en coréen",
+                "placeholderChinese": "Titre du jeu en chinois",
+                "placeholderEspagnol": "Titre du jeu en espagnol",
+                "placeholderTaiwan": "Titre du jeu en taiwanais"
+
+            }
+
+        },
+        "notif":{
+            "deleteGame":{
+                "alert": {
+                    "title": "Suppression du jeu",
+                    "message": "Voulez-vous vraiment supprimer le jeu ?"
+                },
+                "standby": {
+                    "title": "Suppression du jeu",
+                    "message": "Veuillez patienter pendant la suppression du jeu"
+                },
+               "success":{
+                     "title": "Jeu supprimé",
+                     "message": "Le jeu a été supprimé avec succès"
+                },
+                "error":{
+                    "title": "Erreur",
+                    "message": "Une erreur est survenue lors de la suppression du jeu"
+                }
+               
+            },
+            "setIsShow":{
+                "success":{
+                    "title": "Jeu modifié",
+                    "message": "Le jeu a été modifié avec succès"
+                },
+                "error":{
+                    "title": "Erreur",
+                    "message": "Une erreur est survenue lors de la modification du jeu"
+                }
+            },
+            "setIsFavourite":{
+
+                "success":{
+                    "title": "Jeu modifié",
+                    "message": "Le jeu a été modifié avec succès"
+                },
+                "error":{
+                    "title": "Erreur",
+                    "message": "Une erreur est survenue lors de la modification du jeu"
+                }
+            },
+            "newRomFile":{
+                "success":{
+                    "title": "La rom du jeu a été mise à jour",
+                    "message": "La rom du jeu a été mise à jour avec succès"
+                },
+                "error":{
+                    "title": "Erreur",
+                    "message": "Une erreur est survenue lors de la mise à jour de la rom du jeu"
+                }
+            }
+            
+
+            
+        },
+        "category":{
+            "title": "Catégories",
+            "add": "Ajouter une catégorie",
+            "edit": "Modifier la catégorie",
+            "delete": "Supprimer la catégorie",
+            "form":{
+                "name": "Nom de la catégorie",
+                "placeholder": "Nom de la catégorie"
+            },
+            "notif":{
+                "edit":{
+                    "success":{
+                        "title": "Catégorie modifiée",
+                        "message": "La catégorie a été modifiée avec succès"
+                    },
+                    "error":{
+                        "title": "Erreur",
+                        "message": "Une erreur est survenue lors de la modification de la catégorie"
+                    }
+                }
+               
+            },
+            "list":{
+                "0": "Acune catégorie",
+                "1": "versus fighting",
+                "2": "Shoot 'em up",
+                "3": "Shoot",
+                "4": "Beat them all",
+                "5": "Puzzle",
+                "6": "Sport"
+            }
+        
+        },
+        "videoPlayer":{
+            "title":"Video Player",
+            "notSupportTag":"Votre navigateur ne supporte pas la balise vidéo."
+        }
+        
+
+        
+       
+    }
+
