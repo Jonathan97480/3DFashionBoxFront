@@ -1,6 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
 import { useTranslation } from "react-multi-lang";
-import '../assets/css/editGameInfo.css';
 import { GamesInterface } from "../redux/slice/gamesSlice";
 import { Store } from "react-notifications-component";
 

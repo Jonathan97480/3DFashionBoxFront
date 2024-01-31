@@ -62,7 +62,6 @@ var react_multi_lang_1 = require("react-multi-lang");
 var Alert_1 = require("./Alert");
 var EditGameInfo_1 = require("./EditGameInfo");
 var img_1 = require("../assets/img");
-require("../assets/css/table.css");
 var react_router_dom_1 = require("react-router-dom");
 function Table(props) {
     var _this = this;

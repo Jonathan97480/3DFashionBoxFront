@@ -50,7 +50,6 @@ exports.__esModule = true;
 exports.defaultDataEdit = void 0;
 var react_1 = require("react");
 var react_multi_lang_1 = require("react-multi-lang");
-require("../assets/css/editGameInfo.css");
 var react_notifications_component_1 = require("react-notifications-component");
 var defaultDataEdit = {
     rowData: {

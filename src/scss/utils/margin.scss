@@ -1,0 +1,10 @@
+.mh-46{
+    margin:0 4.6rem  ;
+}
+
+.hp-m{
+     min-height: calc(100vh - (544px + 80px)); 
+@include media(medium){
+     min-height: calc(100vh - (229.94px + 80px)); 
+}
+}

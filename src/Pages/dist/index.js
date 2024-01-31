@@ -11,5 +11,3 @@ var Home_1 = require("./Home");
 __createBinding(exports, Home_1, "default", "Home");
 var AddGame_1 = require("./AddGame");
 __createBinding(exports, AddGame_1, "default", "AddGame");
-var AddGameAuto_1 = require("./AddGameAuto");
-__createBinding(exports, AddGameAuto_1, "default", "AddGameAuto");

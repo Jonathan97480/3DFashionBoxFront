@@ -4,7 +4,6 @@ exports.defaultAlertProps = void 0;
 var react_1 = require("react");
 var machine_1 = require("../function/machine");
 var react_multi_lang_1 = require("react-multi-lang");
-require("../assets/css/alert.css");
 var Alert = function (_a) {
     /*     useEffect(() => {
     

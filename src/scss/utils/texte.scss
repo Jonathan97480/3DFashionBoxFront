@@ -1,0 +1,42 @@
+.title, .title--small,.title--medium,.title--standard{
+    font-family: Roboto_slab;
+    font-weight: 700;
+    font-size: 4rem;
+    color: var(--color-secondary);
+    text-align: center;
+
+    &--small{
+        font-size: 1.4rem !important;
+    }
+    &--standard{
+        font-size: 2.4rem !important;
+        margin-bottom: 1rem;
+    }
+    &--medium{
+        font-size: 3.2rem !important;
+    }
+    &_left{
+        text-align: left;
+    }
+    &_right{
+        text-align: right;
+    }
+
+
+}
+
+.paragraphe{
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+    line-height: 2.7rem;
+    color: var(--color-secondary);
+
+}
+
+
+
+.strong{
+    font-weight: 700;
+}

@@ -1,0 +1,47 @@
+
+
+/* UX */
+/* @import 'components/ux/button';
+@import 'components/ux/modal';
+@import 'components/ux/form'; */
+
+
+//Abstract
+@import 'sass-utils/mixins';
+@import 'typo/font';
+//base
+@import 'base/reset';
+@import 'base/body';
+@import 'base/base';
+//layout
+@import 'layout/header';
+@import 'layout/footer';
+//utils
+@import 'utils/margin';
+@import 'utils/pading';
+@import 'utils/texte';
+
+//component
+@import 'components/alert';
+@import 'components/editGameInfo';
+@import 'components/table';
+
+
+//page
+
+/* @import 'page/home';
+@import 'page/404';
+@import 'page/legals'; */
+
+
+
+
+
+
+
+
+
+
+
+
+

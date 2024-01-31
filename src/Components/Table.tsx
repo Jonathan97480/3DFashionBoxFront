@@ -28,7 +28,6 @@ import {
     versus
 } from "../assets/img";
 
-import '../assets/css/table.css';
 import store from "../redux/store";
 import { Link } from "react-router-dom";
 

@@ -1,0 +1,36 @@
+.title, .title--small, .title--medium, .title--standard {
+  font-family: Roboto_slab;
+  font-weight: 700;
+  font-size: 4rem;
+  color: var(--color-secondary);
+  text-align: center;
+}
+.title--small, .title--small--small, .title--medium--small, .title--standard--small {
+  font-size: 1.4rem !important;
+}
+.title--standard, .title--small--standard, .title--medium--standard, .title--standard--standard {
+  font-size: 2.4rem !important;
+  margin-bottom: 1rem;
+}
+.title--medium, .title--small--medium, .title--medium--medium, .title--standard--medium {
+  font-size: 3.2rem !important;
+}
+.title_left, .title--small_left, .title--medium_left, .title--standard_left {
+  text-align: left;
+}
+.title_right, .title--small_right, .title--medium_right, .title--standard_right {
+  text-align: right;
+}
+
+.paragraphe {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  line-height: 2.7rem;
+  color: var(--color-secondary);
+}
+
+.strong {
+  font-weight: 700;
+}

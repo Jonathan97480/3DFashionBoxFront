@@ -1,0 +1,31 @@
+/* Pour utiliser une Mixin :
+@include media(small){}
+
+
+*/
+
+$breakpoints:(
+  'smaller':(
+        min-width: 417px
+    ),
+
+    'small':(
+        min-width: 576px
+    ),
+
+    'medium':(
+        min-width: 992px
+    ),
+
+    'large':(
+        min-width: 1400px
+    )
+);
+
+@mixin media($name) {
+    @if map-has-key($breakpoints, $name) {
+      @media #{inspect(map-get($breakpoints, $name))} {
+        @content;
+      }
+    }
+  }

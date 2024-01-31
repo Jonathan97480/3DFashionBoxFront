@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import { getMachinePicture } from "../function/machine";
 import { useTranslation } from "react-multi-lang";
-import "../assets/css/alert.css";
+
 import exp from "constants";
 
 interface AlertProps {

@@ -9,7 +9,7 @@ require("react-notifications-component/dist/theme.css");
 var react_redux_1 = require("react-redux");
 var store_1 = require("./redux/store");
 var fr_json_1 = require("./lang/fr.json");
-require("./App.css");
+require("./scss/style.scss");
 react_multi_lang_1.setTranslations({ fr: fr_json_1["default"] });
 react_multi_lang_1.setDefaultLanguage('fr');
 function App() {
@@ -20,7 +20,6 @@ function App() {
                 react_1["default"].createElement(react_router_dom_1.Routes, null,
                     react_1["default"].createElement(react_router_dom_1.Route, { path: "/", element: react_1["default"].createElement(Pages_1.Home, null) }),
                     react_1["default"].createElement(react_router_dom_1.Route, { path: "/addGame", element: react_1["default"].createElement(Pages_1.AddGame, null) }),
-                    react_1["default"].createElement(react_router_dom_1.Route, { path: "/AddGameAuto", element: react_1["default"].createElement(Pages_1.AddGameAuto, null) }),
                     react_1["default"].createElement(react_router_dom_1.Route, { path: "*", element: react_1["default"].createElement("div", null, "404 Not Found") }))))));
 }
 exports["default"] = App;
