@@ -63,6 +63,7 @@ var Alert_1 = require("./Alert");
 var EditGameInfo_1 = require("./EditGameInfo");
 var img_1 = require("../assets/img");
 require("../assets/css/table.css");
+var react_router_dom_1 = require("react-router-dom");
 function Table(props) {
     var _this = this;
     var _a = react_1.useState(react_redux_1.useSelector(function (state) { return state.Games.games; })), data = _a[0], setData = _a[1];
@@ -472,16 +473,20 @@ function Table(props) {
                         handleSearch(event);
                     } }),
                 react_1["default"].createElement("button", null, t("table.search.button")))),
-        react_1["default"].createElement("table", null,
-            react_1["default"].createElement("thead", null,
-                react_1["default"].createElement("tr", null, columns.map(function (column, index) { return (index === 0 ? react_1["default"].createElement("th", { key: "action" }, t("table.rows.action")) :
-                    react_1["default"].createElement("th", { key: column.key }, t("table.rows." + column.title))); }))),
-            react_1["default"].createElement("tbody", { onScroll: function (event) {
-                    scrollDection(event);
-                } },
-                data.map(function (row) { return (react_1["default"].createElement("tr", { key: row.pid }, columns.map(function (column, index) { return (react_1["default"].createElement(SpecilaColumn, { key: index + "lstC", index: index, keyColumn: column.key, row: row })); }))); }),
-                loading ? react_1["default"].createElement("tr", null,
-                    react_1["default"].createElement("td", null, t("global.loading"))) : null)),
+        react_1["default"].createElement("div", null,
+            "  ",
+            react_1["default"].createElement(react_router_dom_1.Link, { to: "/addGame" },
+                react_1["default"].createElement("button", { className: "btnAddGame" }, t("home.addGame"))),
+            react_1["default"].createElement("table", null,
+                react_1["default"].createElement("thead", null,
+                    react_1["default"].createElement("tr", null, columns.map(function (column, index) { return (index === 0 ? react_1["default"].createElement("th", { key: "action" }, t("table.rows.action")) :
+                        react_1["default"].createElement("th", { key: column.key }, t("table.rows." + column.title))); }))),
+                react_1["default"].createElement("tbody", { onScroll: function (event) {
+                        scrollDection(event);
+                    } },
+                    data.map(function (row) { return (react_1["default"].createElement("tr", { key: row.pid }, columns.map(function (column, index) { return (react_1["default"].createElement(SpecilaColumn, { key: index + "lstC", index: index, keyColumn: column.key, row: row })); }))); }),
+                    loading ? react_1["default"].createElement("tr", null,
+                        react_1["default"].createElement("td", null, t("global.loading"))) : null))),
         react_1["default"].createElement(Alert_1["default"], { isShowAlert: alert.isShowAlert, typeMachine: 0, title: t(alert.title), message: t(alert.message), submit: function () { alert.submit(); }, cancel: function () { alert.cancel(); } }),
         react_1["default"].createElement(EditGameInfo_1["default"], { isShow: editGameInfo.isShow, rowData: editGameInfo.rowData, onClose: function () { return setEditGameInfo(EditGameInfo_1.defaultDataEdit); } })));
 }

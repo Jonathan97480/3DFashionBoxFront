@@ -42,10 +42,7 @@ export default function Home() {
         loading ? <div>{t("global.loading")}</div> :
             <div className="home">
                 <div>
-                    {/* BTN ADD GAME */}
-                    <Link to="/addGame">
-                        <button className="btnAddGame">{t("home.addGame")}</button>
-                    </Link>
+
                     {/* BTN BACKUP ALL GAME SD CARD */}
 
                     <button onClick={() => setAlert({

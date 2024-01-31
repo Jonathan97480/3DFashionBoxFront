@@ -95,8 +95,6 @@ function Home() {
     return (loading ? react_1["default"].createElement("div", null, t("global.loading")) :
         react_1["default"].createElement("div", { className: "home" },
             react_1["default"].createElement("div", null,
-                react_1["default"].createElement(react_router_dom_1.Link, { to: "/addGame" },
-                    react_1["default"].createElement("button", { className: "btnAddGame" }, t("home.addGame"))),
                 react_1["default"].createElement("button", { onClick: function () { return setAlert(__assign(__assign({}, Alert_1.defaultAlertProps), { isShowAlert: true, title: "home.backupSdCard", message: "home.backupSdCardMessage", submit: handleBackupGameSdCard, cancel: function () { return setAlert(__assign(__assign({}, Alert_1.defaultAlertProps), { isShowAlert: false })); } })); }, className: "btnBackup" }, t("home.addGameSdCardInLib"))),
             react_1["default"].createElement(Components_1.Table, { onRowClick: function (row) {
                     navigate('/EditGameInfo', { state: { rowData: row } });

@@ -30,6 +30,7 @@ import {
 
 import '../assets/css/table.css';
 import store from "../redux/store";
+import { Link } from "react-router-dom";
 
 
 type TableProps = {
@@ -454,40 +455,44 @@ export default function Table(props: TableProps) {
             </div>
 
 
-
-            <table>
-                <thead>
-                    <tr>
-                        {columns.map((column, index) => (
-                            index === 0 ? <th key={"action"} >{t("table.rows.action")}</th> :
-                                <th key={column.key}>{t(`table.rows.${column.title}`)}</th>
-
-                        ))}
-                    </tr>
-
-                </thead>
-                <tbody onScroll={
-                    (event) => {
-                        scrollDection(event);
-                    }
-                }>
-                    {data.map((row) => (
-
-                        <tr key={row.pid} /* onClick={() => onRowClick(row)} */>
-
+            <div>  {/* BTN ADD GAME */}
+                <Link to="/addGame">
+                    <button className="btnAddGame">{t("home.addGame")}</button>
+                </Link>
+                <table>
+                    <thead>
+                        <tr>
                             {columns.map((column, index) => (
-                                <SpecilaColumn key={index + "lstC"} index={index} keyColumn={column.key} row={row} />
+                                index === 0 ? <th key={"action"} >{t("table.rows.action")}</th> :
+                                    <th key={column.key}>{t(`table.rows.${column.title}`)}</th>
+
                             ))}
                         </tr>
 
+                    </thead>
+                    <tbody onScroll={
+                        (event) => {
+                            scrollDection(event);
+                        }
+                    }>
+                        {data.map((row) => (
+
+                            <tr key={row.pid} /* onClick={() => onRowClick(row)} */>
+
+                                {columns.map((column, index) => (
+                                    <SpecilaColumn key={index + "lstC"} index={index} keyColumn={column.key} row={row} />
+                                ))}
+                            </tr>
 
 
-                    ))}
-                    {
-                        loading ? <tr><td>{t("global.loading")}</td></tr> : null
-                    }
-                </tbody>
-            </table>
+
+                        ))}
+                        {
+                            loading ? <tr><td>{t("global.loading")}</td></tr> : null
+                        }
+                    </tbody>
+                </table>
+            </div>
             <Alert
                 isShowAlert={alert.isShowAlert}
                 typeMachine={0}
