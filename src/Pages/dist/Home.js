@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -40,6 +51,7 @@ var react_1 = require("react");
 var react_router_dom_1 = require("react-router-dom");
 var Components_1 = require("../Components");
 var react_multi_lang_1 = require("react-multi-lang");
+var Alert_1 = require("../Components/Alert");
 function Home() {
     var _this = this;
     var t = react_multi_lang_1.useTranslation();
@@ -47,6 +59,7 @@ function Home() {
     //RECUPERATION DE LISTE DE JEUX POUR CARTE MERE H3 3D FASHION
     var _a = react_1["default"].useState(false), loading = _a[0], setLoading = _a[1];
     var _b = react_1["default"].useState(undefined), error = _b[0], setError = _b[1];
+    var _c = react_1["default"].useState(Alert_1.defaultAlertProps), alert = _c[0], setAlert = _c[1];
     var handleBackupGameSdCard = function () { return __awaiter(_this, void 0, void 0, function () {
         var response, json, error_1;
         return __generator(this, function (_a) {
@@ -84,9 +97,10 @@ function Home() {
             react_1["default"].createElement("div", null,
                 react_1["default"].createElement(react_router_dom_1.Link, { to: "/addGame" },
                     react_1["default"].createElement("button", { className: "btnAddGame" }, t("home.addGame"))),
-                react_1["default"].createElement("button", { onClick: function () { return handleBackupGameSdCard(); }, className: "btnBackup" }, t("home.addGameSdCardInLib"))),
+                react_1["default"].createElement("button", { onClick: function () { return setAlert(__assign(__assign({}, Alert_1.defaultAlertProps), { isShowAlert: true, title: "home.backupSdCard", message: "home.backupSdCardMessage", submit: handleBackupGameSdCard, cancel: function () { return setAlert(__assign(__assign({}, Alert_1.defaultAlertProps), { isShowAlert: false })); } })); }, className: "btnBackup" }, t("home.addGameSdCardInLib"))),
             react_1["default"].createElement(Components_1.Table, { onRowClick: function (row) {
                     navigate('/EditGameInfo', { state: { rowData: row } });
-                } })));
+                } }),
+            react_1["default"].createElement(Components_1.Alert, __assign({}, alert))));
 }
 exports["default"] = Home;

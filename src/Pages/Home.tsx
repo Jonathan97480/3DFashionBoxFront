@@ -1,9 +1,10 @@
 import React, { SetStateAction } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Table } from '../Components';
+import { Alert, Table } from '../Components';
 import { useSelector, useDispatch } from "react-redux"
 import { GamesInterface, setGames } from '../redux/slice/gamesSlice';
 import { useTranslation } from 'react-multi-lang';
+import { defaultAlertProps } from '../Components/Alert';
 
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
 
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState(undefined);
-
+    const [alert, setAlert] = React.useState(defaultAlertProps);
 
     const handleBackupGameSdCard = async () => {
         setLoading(true);
@@ -47,7 +48,14 @@ export default function Home() {
                     </Link>
                     {/* BTN BACKUP ALL GAME SD CARD */}
 
-                    <button onClick={() => handleBackupGameSdCard()}
+                    <button onClick={() => setAlert({
+                        ...defaultAlertProps
+                        , isShowAlert: true
+                        , title: "home.backupSdCard"
+                        , message: "home.backupSdCardMessage"
+                        , submit: handleBackupGameSdCard,
+                        cancel: () => setAlert({ ...defaultAlertProps, isShowAlert: false })
+                    })}
                         className="btnBackup">{t("home.addGameSdCardInLib")}</button>
 
                 </div>
@@ -58,7 +66,7 @@ export default function Home() {
                         navigate('/EditGameInfo', { state: { rowData: row } });
                     }}
                 />
-
+                <Alert {...alert} />
             </div>
     );
 
