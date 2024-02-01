@@ -56,7 +56,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
     const [data, setData] = useState<GamesInterface>(rowData);
     const [video, setVideo] = useState<string>("");
     const t = useTranslation();
-    const BASE_VIDEO_URL = 'http://localhost:8080/video/';
+    const BASE_VIDEO_URL = '"http://83.198.193.155:8080/video/';
     const BASE_API_URL = "http://83.198.193.155:8080/api/";
 
 
