@@ -56,7 +56,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
     const [data, setData] = useState<GamesInterface>(rowData);
     const [video, setVideo] = useState<string>("");
     const t = useTranslation();
-    const BASE_VIDEO_URL = '"http://83.198.193.155:8080/video/';
+    const BASE_VIDEO_URL = 'http://83.198.193.155:8080/video/';
     const BASE_API_URL = "http://83.198.193.155:8080/api/";
 
 
@@ -64,6 +64,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
     useLayoutEffect(() => {
 
         if (video != `${BASE_VIDEO_URL}${rowData.mp4name}.mp4`) {
+
             setVideo(`${BASE_VIDEO_URL}${rowData.mp4name}.mp4`);
         }
 
@@ -88,6 +89,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
 
     /* Data UPDATE IN API */
     const handleUpdateVideo = async (file: File) => {
+
         const newFormData = new FormData();
         newFormData.append('video', file);
 
