@@ -27,15 +27,10 @@ import {
     sport,
     versus
 } from "../assets/img";
-
-import store from "../redux/store";
 import { Link } from "react-router-dom";
 
 
-type TableProps = {
 
-    onRowClick: (row: GamesInterface) => void;
-}
 
 type SpecialColumnProps = {
     keyColumn: string;
@@ -43,7 +38,7 @@ type SpecialColumnProps = {
     index: number;
 };
 
-export default function Table(props: TableProps) {
+export default function Table() {
     const [data, setData] = useState<GamesInterface[]>(useSelector((state: any) => state.Games.games));
     const dispatch = useDispatch()
     const [pagination, setPagination] = React.useState({ page: 1, limit: 50, totalPages: 0 });

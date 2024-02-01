@@ -24,6 +24,12 @@ import noShow from '../assets/images/icon/nowShow158342.png';
 import fav from '../assets/images/icon/fav.png';
 import noFav from '../assets/images/icon/noFav.png'
 
+/* decoration and background */
+import libGamesPicture from '../assets/images/art/lib_img.png';
+import arcadeGamePicture from '../assets/images/art/arcade.jpg';
+
+
+
 /* export all */
 export {
     megaDrive,
@@ -45,5 +51,7 @@ export {
     show,
     noShow,
     fav,
-    noFav
+    noFav,
+    libGamesPicture,
+    arcadeGamePicture
 }

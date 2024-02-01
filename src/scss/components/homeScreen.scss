@@ -1,0 +1,42 @@
+// Variables
+$button-width: 160px;
+$button-height: 200px;
+$button-margin: 20px;
+
+// Style du composant HomeScreen
+.homeScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Occupe toute la hauteur de la fenêtre
+
+  // Style du conteneur homeScreen_select
+  &__select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    // Style des boutons
+    button {
+      margin: $button-margin;
+      background-color: #af107a;
+      border: none;
+      cursor: pointer;
+
+      // Style des images à l'intérieur des boutons
+      img {
+        width: $button-width;
+        height: $button-height;
+        object-fit: cover;
+
+        
+        // Style des images au survol
+        &:hover {
+          opacity: 0.8;
+        }
+
+    }
+    }
+  }
+}

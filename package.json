@@ -12,6 +12,7 @@
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "browserify-fs": "^1.0.0",
+    "npm-run-all": "^4.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-multi-lang": "^2.2.0",
@@ -24,7 +25,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start ./server/nodemon index",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

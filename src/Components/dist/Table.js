@@ -63,7 +63,7 @@ var Alert_1 = require("./Alert");
 var EditGameInfo_1 = require("./EditGameInfo");
 var img_1 = require("../assets/img");
 var react_router_dom_1 = require("react-router-dom");
-function Table(props) {
+function Table() {
     var _this = this;
     var _a = react_1.useState(react_redux_1.useSelector(function (state) { return state.Games.games; })), data = _a[0], setData = _a[1];
     var dispatch = react_redux_1.useDispatch();

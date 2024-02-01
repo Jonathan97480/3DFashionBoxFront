@@ -1,0 +1,26 @@
+.homeScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.homeScreen__select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.homeScreen__select button {
+  margin: 20px;
+  background-color: #af107a;
+  border: none;
+  cursor: pointer;
+}
+.homeScreen__select button img {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+}
+.homeScreen__select button img:hover {
+  opacity: 0.8;
+}
