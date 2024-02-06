@@ -13,3 +13,5 @@ var Alert_1 = require("./Alert");
 __createBinding(exports, Alert_1, "default", "Alert");
 var EditGameInfo_1 = require("../Components/EditGameInfo");
 __createBinding(exports, EditGameInfo_1, "default", "EditGameInfo");
+var Search_1 = require("../Components/Search");
+__createBinding(exports, Search_1, "default", "Search");

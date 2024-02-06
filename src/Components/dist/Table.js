@@ -63,6 +63,7 @@ var Alert_1 = require("./Alert");
 var EditGameInfo_1 = require("./EditGameInfo");
 var img_1 = require("../assets/img");
 var react_router_dom_1 = require("react-router-dom");
+var Search_1 = require("./Search");
 function Table() {
     var _this = this;
     var _a = react_1.useState(react_redux_1.useSelector(function (state) { return state.Games.games; })), data = _a[0], setData = _a[1];
@@ -467,11 +468,7 @@ function Table() {
         react_1["default"].createElement("h1", null, title),
         react_1["default"].createElement("div", null,
             react_1["default"].createElement("div", { className: "filter" }, Object.keys(filter).map(function (key) { return (react_1["default"].createElement("button", { key: key, onClick: function () { return handleFilter(parseInt(key)); } }, t("table.filter." + filter[key]))); })),
-            react_1["default"].createElement("div", null,
-                react_1["default"].createElement("input", { type: "search", placeholder: t("table.search.placeholder"), onChange: function (event) {
-                        handleSearch(event);
-                    } }),
-                react_1["default"].createElement("button", null, t("table.search.button")))),
+            react_1["default"].createElement(Search_1["default"], { placeholder: t("table.search.placeholder"), outPut: function (value) { return handleSearch(value); } })),
         react_1["default"].createElement("div", null,
             "  ",
             react_1["default"].createElement(react_router_dom_1.Link, { to: "/addGame" },

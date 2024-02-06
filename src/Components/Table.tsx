@@ -28,6 +28,7 @@ import {
     versus
 } from "../assets/img";
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 
 
@@ -436,15 +437,11 @@ export default function Table() {
                         ))
                     }
                 </div>
-                <div>
-                    <input type="search" placeholder={t("table.search.placeholder")} onChange={
-                        (event) => {
-                            handleSearch(event);
-                        }
+                <Search
+                    placeholder={t("table.search.placeholder")}
+                    outPut={(value) => handleSearch(value)}
+                />
 
-                    } />
-                    <button>{t("table.search.button")}</button>
-                </div>
 
             </div>
 

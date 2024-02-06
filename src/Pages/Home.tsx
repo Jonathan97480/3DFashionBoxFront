@@ -1,6 +1,6 @@
 import React, { SetStateAction } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Alert, Table } from '../Components';
+import { Alert, LibGameList, RandomGame, Table, TenLastGame } from '../Components';
 import { useSelector, useDispatch } from "react-redux"
 import { GamesInterface, setGames } from '../redux/slice/gamesSlice';
 import { useTranslation } from 'react-multi-lang';
@@ -92,6 +92,8 @@ const ScreenSlector = ({ screen, setScreen }: ScreenSlectorInterface) => {
     }
 }
 
+
+
 const FashionBoxGames = () => {
     const navigate = useNavigate();
 
@@ -107,7 +109,11 @@ const LibGames = () => {
     const navigate = useNavigate();
 
     return (
-        <Table />
+        <>
+            <RandomGame />
+            <TenLastGame />
+            <LibGameList />
+        </>
     )
 
 }

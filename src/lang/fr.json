@@ -162,6 +162,14 @@
         "videoPlayer":{
             "title":"Video Player",
             "notSupportTag":"Votre navigateur ne supporte pas la balise vidéo."
+        },
+        "randomGame":{
+            "title":"Jeux aléatoire",
+            "desc": "Ce widget affiche trois jeux aléatoire parmi les jeux de la carte mère H3 3D Fashion disponible dans la bibliothèque."
+        },
+        "tenLastGame":{
+            "title":"Dix derniers jeux ajoutés",
+            "desc": "Ce widget affiche les dix derniers jeux ajoutés dans la bibliothèque."
         }
         
 
