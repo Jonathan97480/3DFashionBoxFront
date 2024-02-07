@@ -1,12 +1,14 @@
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Alert, LibGameList, RandomGame, Table, TenLastGame } from '../Components';
+import { Alert, Filter, LibGameList, RandomGame, Search, Table, TenLastGame } from '../Components';
 import { useSelector, useDispatch } from "react-redux"
-import { GamesInterface, setGames } from '../redux/slice/gamesSlice';
+import { setGames } from '../redux/slice/gamesLibSlice';
+
 import { useTranslation } from 'react-multi-lang';
 import { defaultAlertProps } from '../Components/Alert';
 import libGamesPicture from '../assets/images/art/lib_img.png';
 import arcadeGamePicture from '../assets/images/art/arcade.jpg';
+import { libGameInterface } from '../Components/RandomGame';
 
 
 interface screenInterface {
@@ -23,6 +25,11 @@ export default function Home() {
     const [error, setError] = React.useState(undefined);
     const [alert, setAlert] = React.useState(defaultAlertProps);
     const [screen, setScreen] = React.useState<screenInterface>({ screen: "home" });
+    const ADREESE_API = "http://83.198.193.155:8080/api/";
+
+
+
+
 
     const handleBackupGameSdCard = async () => {
         setLoading(true);
@@ -107,12 +114,78 @@ const FashionBoxGames = () => {
 
 const LibGames = () => {
     const navigate = useNavigate();
+    const ADREESE_API = "http://83.198.193.155:8080/api/";
+    const [isFilter, setIsFilter] = React.useState(false);
+    const [data, setData] = React.useState<libGameInterface[]>([]);
+    const dispatch = useDispatch();
+    const [pagination, setPagination] = useState({ page: 1, limit: 10 });
+
+
+    const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value.toLowerCase();
+        if (value === "") return setData(data);
+        if (value.length < 3) return;
+
+        try {
+            const response = await fetch(`${ADREESE_API}findLibGame/${value}`);
+            const json = await response.json();
+            if (json.success) {
+                setData(json.data.games);
+            } else {
+                setData([]);
+
+            }
+
+
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    };
+
+    const handleGetLibGameList = async () => {
+
+
+        const result = await fetch(ADREESE_API + `lib/gameLibList/${pagination.page}/${pagination.limit}`);
+        const data = await result.json();
+
+        if (data.success) {
+            console.log(data.data);
+            dispatch(setGames(data.data.games));
+            setData(data.data.games);
+
+
+        } else {
+
+            console.log(data.message);
+        }
+    };
+
+    React.useEffect(() => {
+        handleGetLibGameList();
+    }, [pagination]);
 
     return (
         <>
             <RandomGame />
             <TenLastGame />
-            <LibGameList />
+
+            <Filter
+                urlApiFilter={`${ADREESE_API}filterLibGame/`}
+                data={(value) => {
+                    dispatch(setGames(value));
+                    setData(value);
+                }}
+                setIsFilter={(f) => setIsFilter(f)}
+            />
+            <Search
+                placeholder="Search Game"
+                outPut={(event) => {
+                    handleSearch(event);
+
+                }}
+            />
+            <LibGameList data={data} />
         </>
     )
 
@@ -146,4 +219,8 @@ const HomeScreen = ({ setScreen }: HomeScreenInterface) => {
         </div>
     )
 
+}
+
+function dispatch(arg0: { payload: any; type: "Games/setGames"; }) {
+    throw new Error('Function not implemented.');
 }

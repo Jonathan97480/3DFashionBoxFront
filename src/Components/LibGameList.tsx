@@ -2,37 +2,26 @@ import { useEffect, useState } from "react";
 import Search from "./Search";
 import { useTranslation } from "react-multi-lang";
 import { libGameInterface } from "./RandomGame";
+import { useDispatch, useSelector } from "react-redux"
+import { setGames } from "../redux/slice/gamesLibSlice";
 
-const LibGameList = () => {
+interface LibGameListInterface {
+    data: libGameInterface[]
+}
 
-    const [libGameList, setLibGameList] = useState<libGameInterface[]>([]);
+const LibGameList = ({ data }: LibGameListInterface) => {
+
+    const [libGameList, setLibGameList] = useState<libGameInterface[]>(data);
     const t = useTranslation();
     const ADREESE_API = "http://83.198.193.155:8080/api/";
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(undefined);
-    const [pagination, setPagination] = useState({ page: 1, limit: 10 });
     const EMPTY_SCREEN_SHOT = "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        handleGetLibGameList();
-    }, [pagination.page])
-
-
-
-    const handleGetLibGameList = async () => {
-
-
-        const result = await fetch(ADREESE_API + `lib/gameLibList/${pagination.page}/${pagination.limit}`);
-        const data = await result.json();
-
-        if (data.success) {
-            console.log(data.data);
-            setLibGameList(data.data.games);
-        } else {
-
-            console.log(data.message);
-        }
-    };
+        setLibGameList(data);
+    }, [data]);
 
 
     if (libGameList?.length == 0) {
@@ -45,13 +34,7 @@ const LibGameList = () => {
         <div>
             <h3>Game List</h3>
 
-            <Search
-                placeholder="Search Game"
-                outPut={() => {
-                    console.log("searching game")
 
-                }}
-            />
             <div>
                 {
                     libGameList.map((game: libGameInterface, index) => {
@@ -70,14 +53,6 @@ const LibGameList = () => {
                         )
                     })
                 }
-            </div>
-            <div>
-                {/* pagination */}
-                <button onClick={() => setPagination({ ...pagination, page: pagination.page - 1 })}>prev</button>
-                <button onClick={() => setPagination({ ...pagination, page: pagination.page + 1 })}>next</button>
-
-
-
             </div>
 
         </div>

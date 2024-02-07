@@ -29,6 +29,7 @@ import {
 } from "../assets/img";
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import Filter from "./Filter";
 
 
 
@@ -221,25 +222,7 @@ export default function Table() {
         }
 
     }
-    const handleFilter = async (value: number) => {
 
-        try {
-            const response = await fetch(`${ADREESE_API}filterGame/` + value);
-            const json = await response.json();
-            if (json.success) {
-                setIsFilter(true);
-                setData(json.data.games);
-            } else {
-                setData([]);
-
-            }
-
-        }
-        catch (error) {
-            console.error('Error:', error);
-            throw error;
-        }
-    }
     const handleDelete = (row: GamesInterface) => {
 
         Store.addNotification({
@@ -410,17 +393,7 @@ export default function Table() {
         }
     }
 
-    const filter = {
-        0: "neoGeo",
-        101: "fba",
-        3: "psx",
-        7: "snes",
-        6: "nes",
-        8: "gba",
-        9: "gbc",
-        4: "n64",
-        10: "md"
-    }
+
 
 
     return (
@@ -429,14 +402,14 @@ export default function Table() {
 
 
             <div>
-                <div className="filter">
-                    {
-                        Object.keys(filter).map((key) => (
-
-                            <button key={key} onClick={() => handleFilter(parseInt(key))}>{t("table.filter." + filter[key as unknown as keyof typeof filter])}</button>
-                        ))
-                    }
-                </div>
+                <Filter
+                    urlApiFilter={`${ADREESE_API}filterGame/`}
+                    data={(value) => {
+                        setData(value);
+                        /* setIsFilter(true); */
+                    }}
+                    setIsFilter={(f) => setIsFilter(f)}
+                />
                 <Search
                     placeholder={t("table.search.placeholder")}
                     outPut={(value) => handleSearch(value)}
