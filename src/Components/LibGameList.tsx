@@ -4,6 +4,7 @@ import { useTranslation } from "react-multi-lang";
 import { libGameInterface } from "./RandomGame";
 import { useDispatch, useSelector } from "react-redux"
 import { setGames } from "../redux/slice/gamesLibSlice";
+import Vigniette from "./Vigniette";
 
 interface LibGameListInterface {
     data: libGameInterface[]
@@ -16,7 +17,6 @@ const LibGameList = ({ data }: LibGameListInterface) => {
     const ADREESE_API = "http://83.198.193.155:8080/api/";
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(undefined);
-    const EMPTY_SCREEN_SHOT = "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -40,15 +40,7 @@ const LibGameList = ({ data }: LibGameListInterface) => {
                     libGameList.map((game: libGameInterface, index) => {
                         return (
                             <button key={index + game.title_en}>
-                                <h2>{game.title_en}</h2>
-                                <img src={
-                                    game.screenshots ? game.screenshots : EMPTY_SCREEN_SHOT
-                                }
-                                    alt={game.title_en}
-                                    width={80}
-                                    height={80}
-
-                                />
+                                <Vigniette title={game.title_en} image={game.screenshots} emu_id={game.emu_id} />
                             </button>
                         )
                     })

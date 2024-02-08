@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { libGameInterface } from "./RandomGame";
 import { useTranslation } from "react-multi-lang";
+import Vigniette from "./Vigniette";
 
 
 const TenLastGame = () => {
@@ -54,8 +55,12 @@ const TenLastGame = () => {
                     return (
 
                         <button>
-                            <h2>{game.title_en}</h2>
-                            <img src={game.screenshots} alt={game.title_en} />
+
+                            <Vigniette
+                                title={game.title_en}
+                                image={game.screenshots}
+                                emu_id={game.emu_id}
+                            />
 
                         </button>
                     )

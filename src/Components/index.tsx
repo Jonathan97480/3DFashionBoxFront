@@ -6,3 +6,4 @@ export { default as RandomGame } from '../Components/RandomGame';
 export { default as TenLastGame } from '../Components/TenLastGame';
 export { default as LibGameList } from '../Components/LibGameList';
 export { default as Filter } from '../Components/Filter';
+export { default as Vigniette } from '../Components/Vigniette';
