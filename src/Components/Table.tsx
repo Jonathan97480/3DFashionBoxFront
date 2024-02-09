@@ -397,9 +397,8 @@ export default function Table() {
 
 
     return (
-        <div className="table"   >
+        <div className="tableGame">
             <h1>{title}</h1>
-
 
             <div>
                 <Filter

@@ -1,24 +1,25 @@
-.table {
+.tableGame {
   max-width: 90%;
   margin: 0 auto;
-
-
-
-
+  color: var(--txt-primary-color);
 }
-
+tbody, thead{
+  background-color: var(--bkg-secondary-color);
+}
 tbody {
   max-height: 80vh;
   display: block;
   overflow: scroll;
   margin: 50px auto;
-
   height: 80vh;
-
   scroll-behavior: smooth;
-
 }
-
+thead{
+  th{
+    background-color: transparent;
+    color: var(--txt-primary-color);
+  }
+}
 h1 {
   font-size: 1.5em;
   text-align: center;
@@ -41,7 +42,7 @@ table {
 
 th,
 td {
-  border: 1px solid #ddd;
+  border: none;
   padding: 8px;
   text-align: left;
 }
@@ -49,10 +50,6 @@ td {
 th {
   background-color: #f2f2f2;
 }
-
-/*   tr:hover {
-    background-color: #4473c9;
-  } */
 tr.clickable:hover {
   background-color: #f5f5f5;
   cursor: pointer;

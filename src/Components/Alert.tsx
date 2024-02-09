@@ -20,7 +20,7 @@ const Alert: React.FC<AlertProps> = ({ isShowAlert, typeMachine, title, message,
 
 
     /*     useEffect(() => {
-    
+
         }, [isShowAlert]); */
 
 
