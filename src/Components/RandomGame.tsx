@@ -34,13 +34,15 @@ interface libGameInterface {
 
 const RandomGame = () => {
 
-    const [games, setGames] = useState<libGameInterface[] | null>(null);
+    const [games, setGames] = useState<libGameInterface[]>([]);
     const ADREESE_API = "http://83.198.193.155:8080/api/";
+    const [loading, setLoading] = useState(false);
     const t = useTranslation();
     useEffect(() => {
-        if (games !== null) {
+        if (games.length > 0 || loading) {
             return;
         } else {
+            setLoading(true);
             handleRandomGame();
 
         }
@@ -49,7 +51,7 @@ const RandomGame = () => {
     }, [games])
 
     const handleRandomGame = async () => {
-        if (games !== null) {
+        if (games.length > 0 || loading) {
             return;
         }
         try {
@@ -57,13 +59,14 @@ const RandomGame = () => {
             const data = await response.json();
 
             if (data.success) {
-                console.log("RANDOM GAME DATA: ", data.data);
+
                 setGames(data.data);
 
             } else {
 
                 console.log(data.message);
             }
+            setLoading(false);
         } catch (error) {
 
             console.log(error);
@@ -77,20 +80,22 @@ const RandomGame = () => {
     }
 
     return (
-        <div>
-            <h1>{t("randomGame.title")}</h1>
+        <div className="randomGame">
+            <h2 className="title">{t("randomGame.title")}</h2>
+            <div className="randomGame__contenaire">
+                {
+                    games?.map((game: libGameInterface, index) => {
+                        return (
+                            <div>
 
-            {
-                games?.map((game: libGameInterface, index) => {
-                    return (
-                        <>
-                            <h2>{game.title_en}</h2>
-                            <img src={convertImageUrl(game.screenshots)} alt={game.title_en} />
-                        </>
-                    )
-                })
+                                <img src={convertImageUrl(game.screenshots)} alt={game.title_en} />
+                                <h3>{game.title_en}</h3>
+                            </div>
+                        )
+                    })
 
-            }
+                }
+            </div>
 
             <small>{t("randomGame.desc")}</small>
         </div >

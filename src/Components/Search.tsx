@@ -40,16 +40,18 @@ const Search = ({ placeholder, outPut, enter }: SearchInterface) => {
                     }
                 }
             />
-            <FaSearch
-                className="search_icon"
-                onClick={
-                    () => {
-                        enter && enter()
+            <div className="search__icon">
+                <FaSearch
+
+                    onClick={
+                        () => {
+                            enter && enter()
+                        }
                     }
-                }
-                width={20}
-                height={20}
-            />
+                    width={20}
+                    height={20}
+                />
+            </div>
         </div>
     );
 

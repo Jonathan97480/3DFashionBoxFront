@@ -65,7 +65,11 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
 
         if (video != `${BASE_VIDEO_URL}${rowData.mp4name}.mp4`) {
 
+            console.log('set video', `${BASE_VIDEO_URL}${rowData.mp4name}.mp4`);
+
             setVideo(`${BASE_VIDEO_URL}${rowData.mp4name}.mp4`);
+
+
         }
 
         setData(rowData);
@@ -179,11 +183,11 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
     }
 
     return (
+        <div className="editGameInfo">
 
-        <div className="modal">
             <h1> {data.title_en} </h1>
-            <div className="modal_contenair">
-                <div className="left-side">
+            <div className="editGameInfo__contenair">
+                <div className="editGameInfo__contenair_left-side">
 
                     <span>
                         <label>{t("namegame")}</label>
@@ -219,7 +223,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
 
 
                     </span>
-                    {checkIsArcadeGame(data.emu_id) ? <div className="advanced-options">
+                    {checkIsArcadeGame(data.emu_id) ? <div className="editGameInfo__contenair_left-side_advanced-options">
 
                         <span>
                             <label>{t("global.game.loadTime")}</label>
@@ -254,7 +258,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
                     <br /><br />{/* :TODO delete an style make */}
                     <button disabled={checISDataAndRawDataEqual()} onClick={handleUpdateData}>{t("global.buttons.save")}</button>
                 </div>
-                <div className="right-side">
+                <div className="editGameInfo__contenair_right-side">
                     <VideoPlayer url={video} />
                     <button onClick={
                         /* open input file */
@@ -277,6 +281,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
 
             </div>
         </div>
+
 
     );
 }

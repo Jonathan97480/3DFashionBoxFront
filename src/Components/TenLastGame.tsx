@@ -6,15 +6,17 @@ import Vigniette from "./Vigniette";
 
 const TenLastGame = () => {
 
-    const [tenLastGames, setTenLastGames] = useState<libGameInterface[] | null>(null);
+    const [tenLastGames, setTenLastGames] = useState<libGameInterface[]>([]);
     const ADREESE_API = "http://83.198.193.155:8080/api/";
+    const [loading, setLoading] = useState(false);
     const t = useTranslation();
 
     useEffect(() => {
 
-        if (tenLastGames !== null) {
+        if (tenLastGames.length > 0 || loading) {
             return;
         } else {
+            setLoading(true);
             handleGetTenLastGame();
 
         }
@@ -25,7 +27,7 @@ const TenLastGame = () => {
 
 
     const handleGetTenLastGame = async () => {
-        if (tenLastGames !== null) {
+        if (tenLastGames.length > 0 || loading) {
             return;
         }
 
@@ -34,9 +36,14 @@ const TenLastGame = () => {
         if (data.success) {
 
             setTenLastGames(data.data);
+            if (data.data.length > 0) {
+                setLoading(false);
+            }
+
         } else {
 
             console.log(data.message);
+
         }
     }
 
@@ -48,25 +55,26 @@ const TenLastGame = () => {
 
     return (
         <div className="tenLastGame">
-            <h1 className="tenLastGame_title">{t("tenLastGame.title")}</h1>
+            <h2 className="title">{t("tenLastGame.title")}</h2>
+            <div className="tenLastGame__contenaire">
+                {
+                    tenLastGames?.map((game: libGameInterface, index) => {
+                        return (
 
-            {
-                tenLastGames?.map((game: libGameInterface, index) => {
-                    return (
+                            <button>
 
-                        <button>
+                                <Vigniette
+                                    title={game.title_en}
+                                    image={game.screenshots}
+                                    emu_id={game.emu_id}
+                                />
 
-                            <Vigniette
-                                title={game.title_en}
-                                image={game.screenshots}
-                                emu_id={game.emu_id}
-                            />
+                            </button>
+                        )
+                    })
 
-                        </button>
-                    )
-                })
-
-            }
+                }
+            </div>
         </div>
     )
 

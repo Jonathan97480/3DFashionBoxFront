@@ -20,8 +20,6 @@ interface VignietteProps {
 
 const Vigniette = ({ title, image, emu_id }: VignietteProps) => {
     const EMPTY_SCREEN_SHOT = "https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"
-
-
     const handleSelectIconMachine = (emu_id: number) => {
 
         switch (emu_id) {
@@ -55,10 +53,12 @@ const Vigniette = ({ title, image, emu_id }: VignietteProps) => {
 
     return (
         <div className="vigniette">
-            <img src={
+
+            <img className='vigniette__background' src={
                 image ? image : EMPTY_SCREEN_SHOT
             } alt={title} />
-            <img src={handleSelectIconMachine(emu_id)} alt={title + "_icon"} />
+            <img className='vigniette__icon' src={handleSelectIconMachine(emu_id)} alt={title + "_icon"} />
+
             <h3>{title}</h3>
         </div>
     )

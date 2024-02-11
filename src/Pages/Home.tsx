@@ -1,6 +1,6 @@
 import React, { SetStateAction, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Alert, Filter, LibGameList, RandomGame, Search, Table, TenLastGame } from '../Components';
+import { Alert, Filter, LibGameList, ModalInfoGameLib, RandomGame, Search, Table, TenLastGame } from '../Components';
 import { useSelector, useDispatch } from "react-redux"
 import { setGames } from '../redux/slice/gamesLibSlice';
 
@@ -113,10 +113,25 @@ const FashionBoxGames = () => {
 }
 
 const LibGames = () => {
+
+    interface modalInfoGameLibInterface {
+        data: libGameInterface;
+        isVisble: boolean;
+        onClose: () => void;
+    }
+
     const navigate = useNavigate();
     const ADREESE_API = "http://83.198.193.155:8080/api/";
     const [isFilter, setIsFilter] = React.useState(false);
     const [data, setData] = React.useState<libGameInterface[]>([]);
+    const [modalInfo, setModalInfo] = React.useState<modalInfoGameLibInterface>(
+        {
+            data: {} as libGameInterface,
+            isVisble: false,
+            onClose: () => { }
+        }
+    );
+
     const dispatch = useDispatch();
     const [pagination, setPagination] = useState({ page: 1, limit: 10 });
 
@@ -163,12 +178,13 @@ const LibGames = () => {
 
     React.useEffect(() => {
         handleGetLibGameList();
-    }, [pagination]);
+    }, [pagination, modalInfo.isVisble, isFilter]);
 
     return (
         <>
             <RandomGame />
             <TenLastGame />
+            <h2 className='title'>Liste des jeux dans la lib</h2>
 
             <Filter
                 urlApiFilter={`${ADREESE_API}filterLibGame/`}
@@ -185,7 +201,23 @@ const LibGames = () => {
 
                 }}
             />
-            <LibGameList data={data} />
+            <LibGameList data={data} selectGame={(_game) => setModalInfo(
+                {
+                    data: _game,
+                    isVisble: true,
+                    onClose: () => {
+                        setModalInfo({ ...modalInfo, isVisble: true });
+                    }
+                }
+            )} />
+            <ModalInfoGameLib
+                _data={modalInfo.data}
+                _isVisible={modalInfo.isVisble}
+                _onClose={() => {
+                    setModalInfo({ ...modalInfo, isVisble: false });
+                }}
+            />
+
         </>
     )
 
