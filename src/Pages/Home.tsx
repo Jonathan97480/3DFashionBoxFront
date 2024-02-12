@@ -131,7 +131,7 @@ const LibGames = () => {
             onClose: () => { }
         }
     );
-
+    const [isVisble, setIsVisble] = React.useState(false);
     const dispatch = useDispatch();
     const [pagination, setPagination] = useState({ page: 1, limit: 10 });
 
@@ -165,7 +165,7 @@ const LibGames = () => {
         const data = await result.json();
 
         if (data.success) {
-            console.log(data.data);
+            console.log("lib data Games : ", data.data);
             dispatch(setGames(data.data.games));
             setData(data.data.games);
 
@@ -178,7 +178,7 @@ const LibGames = () => {
 
     React.useEffect(() => {
         handleGetLibGameList();
-    }, [pagination, modalInfo.isVisble, isFilter]);
+    }, [pagination, isFilter]);
 
     return (
         <>
@@ -201,20 +201,26 @@ const LibGames = () => {
 
                 }}
             />
-            <LibGameList data={data} selectGame={(_game) => setModalInfo(
-                {
-                    data: _game,
-                    isVisble: true,
-                    onClose: () => {
-                        setModalInfo({ ...modalInfo, isVisble: true });
+            <LibGameList data={data} selectGame={(_game) => {
+                setIsVisble(true);
+                setModalInfo(
+                    {
+                        data: _game,
+                        isVisble: true,
+                        onClose: () => {
+                            setModalInfo({ ...modalInfo, isVisble: true });
+                            setIsVisble(false);
+                        }
                     }
-                }
-            )} />
+                )
+
+            }
+            } />
             <ModalInfoGameLib
                 _data={modalInfo.data}
-                _isVisible={modalInfo.isVisble}
+                _isVisible={isVisble}
                 _onClose={() => {
-                    setModalInfo({ ...modalInfo, isVisble: false });
+                    setIsVisble(false);
                 }}
             />
 
