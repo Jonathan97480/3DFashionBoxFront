@@ -3,6 +3,7 @@ import { GamesInterface, setGames } from "../redux/slice/gamesSlice";
 import { Store } from 'react-notifications-component';
 import { useDispatch, useSelector } from "react-redux"
 import { useTranslation } from "react-multi-lang";
+import { MdDeleteForever } from "react-icons/md";
 import Alert, { AlertProps, defaultAlertProps } from "./Alert";
 import EditGameInfo, { EditGameInfoProps, defaultDataEdit } from "./EditGameInfo";
 import {
@@ -74,7 +75,6 @@ export default function Table() {
                 setData([]);
 
             }
-
 
         } catch (error) {
             console.error('Error:', error);
@@ -214,7 +214,7 @@ export default function Table() {
                         setAlert(defaultAlertProps);
                     },
                 })
-                }>Delete</td>;
+                }><MdDeleteForever className="table-icon"/></td>;
             case 'title_en':
                 return <td className="clickable" key={keyColumn + index + row.pid} onClick={() => handleClickRow(row)}>{row[keyColumn as keyof GamesInterface]}</td>;
             default:
@@ -398,7 +398,7 @@ export default function Table() {
 
     return (
         <div className="tableGame">
-            <h1>{title}</h1>
+            <h1 className="tableGame__title">{title}</h1>
 
             <div>
                 <Filter
@@ -414,15 +414,14 @@ export default function Table() {
                     outPut={(value) => handleSearch(value)}
                 />
 
-
             </div>
 
 
-            <div>  {/* BTN ADD GAME */}
+            <div className="tableGame__content">  {/* BTN ADD GAME */}
                 <Link to="/addGame">
                     <button className="btnAddGame">{t("home.addGame")}</button>
                 </Link>
-                <table>
+                <table className="tableGame__content_table">
                     <thead>
                         <tr>
                             {columns.map((column, index) => (

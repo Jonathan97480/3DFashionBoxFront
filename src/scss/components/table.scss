@@ -1,22 +1,50 @@
 .tableGame {
-  max-width: 90%;
-  margin: 0 auto;
+  max-width: 97vw;
+  margin: auto;
   color: var(--txt-primary-color);
+  &__title {
+    color: var(--txt-secondary-color);
+    font-family: "Codystar";
+    font-size: 5.9rem;
+    text-shadow: 1px 1px 1px #fff, 0 0 80px #ff0000, 0 0 5px #ff0000;
+    max-width: max-content;
+    letter-spacing: 0.5rem;
+    text-align: center;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    margin-top: 1rem;
+    padding: 1rem;
+    @include media(large){
+    font-size: 6.9rem;
+    }
+  }
+  &__content {
+    overflow-x: scroll;
+    border-radius: 0.4rem;
+  }
 }
-tbody, thead{
+
+tbody,
+thead {
   background-color: var(--bkg-secondary-color);
+  border-radius: 0.4rem;
+  font-family: "K2d";
+  font-size: 1.6rem;
 }
 tbody {
-  max-height: 80vh;
+  border-radius: 0 0 0.4rem 0.4rem;
+  max-height: 52vh;
   display: block;
   overflow: scroll;
-  margin: 50px auto;
-  height: 80vh;
   scroll-behavior: smooth;
+  scrollbar-color: var(--scroll-primary-color);
+  scrollbar-width: thin;
+  @include media(large) {
+    max-height: 60vh;
+  }
 }
-thead{
-  th{
-    background-color: transparent;
+thead {
+  th {
+    background-color: var(--bkg-secondary-color);
     color: var(--txt-primary-color);
   }
 }
@@ -35,16 +63,15 @@ button {
 }
 
 table {
-  width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
 
 th,
 td {
-  border: none;
-  padding: 8px;
-  text-align: left;
+  padding: 1.7rem 0.7rem;
+  text-align: center;
+
 }
 
 th {
@@ -57,7 +84,7 @@ tr.clickable:hover {
 
 td img {
   display: block;
-  margin: 0 auto;
+  margin: auto;
 }
 
 span {
@@ -79,5 +106,9 @@ tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
+  background-color: var(--bkg-secondary-color);
   /* even columns width , fix width of table too*/
+}
+.table-icon{
+  font-size: 3.2rem;
 }

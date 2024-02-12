@@ -8,6 +8,7 @@
     }
     &__contenaire{
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
         margin: 5px 10px 20px 10px;
         button{
@@ -24,6 +25,5 @@
                 color: #000;
             }
         }
-      
     }
 }
