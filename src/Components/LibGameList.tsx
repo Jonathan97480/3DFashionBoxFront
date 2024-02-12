@@ -8,9 +8,10 @@ import Vigniette from "./Vigniette";
 
 interface LibGameListInterface {
     data: libGameInterface[]
+    selectGame: (game: libGameInterface) => void
 }
 
-const LibGameList = ({ data }: LibGameListInterface) => {
+const LibGameList = ({ data, selectGame }: LibGameListInterface) => {
 
     const [libGameList, setLibGameList] = useState<libGameInterface[]>(data);
     const t = useTranslation();
@@ -31,16 +32,20 @@ const LibGameList = ({ data }: LibGameListInterface) => {
     }
     console.log("libGameList", libGameList.length);
     return (
-        <div>
-            <h3>Game List</h3>
-
-
-            <div>
+        <div className="libGameList">
+            <h3 className="title">Game List</h3>
+            <div className="libGameList__contenaire">
                 {
                     libGameList.map((game: libGameInterface, index) => {
                         return (
-                            <button key={index + game.title_en}>
-                                <Vigniette title={game.title_en} image={game.screenshots} emu_id={game.emu_id} />
+                            <button
+                                onClick={() => selectGame(game)}
+                                key={index + game.title_en}>
+                                <Vigniette
+                                    title={game.title_en}
+                                    image={game.screenshots}
+                                    emu_id={game.emu_id}
+                                />
                             </button>
                         )
                     })

@@ -1,0 +1,17 @@
+.title{
+    text-align: center;
+    font-size: 2rem;
+    margin: 50px 0;
+    text-transform: uppercase;
+
+}
+
+.tenLastGame{
+
+    &__contenaire{
+        display: flex;
+        justify-content: space-between;
+       margin: 50px 10px;
+
+    }
+}
