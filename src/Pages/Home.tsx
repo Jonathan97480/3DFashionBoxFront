@@ -125,88 +125,99 @@ const LibGames = () => {
   const dispatch = useDispatch();
   const [pagination, setPagination] = useState({ page: 1, limit: 10 });
 
-  const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value.toLowerCase();
-    if (value === "") return setData(data);
-    if (value.length < 3) return;
+    const handleSearch = async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value.toLowerCase();
+        if (value === "") return setData(data);
+        if (value.length < 3) return;
 
-    try {
-      const response = await fetch(`${ADREESE_API}findLibGame/${value}`);
-      const json = await response.json();
-      if (json.success) {
-        setData(json.data.games);
-      } else {
-        setData([]);
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      throw error;
-    }
-  };
+        try {
+            const response = await fetch(`${ADREESE_API}findLibGame/${value}`);
+            const json = await response.json();
+            if (json.success) {
+                setData(json.data.games);
+            } else {
+                setData([]);
 
-  const handleGetLibGameList = async () => {
-    const result = await fetch(
-      ADREESE_API + `lib/gameLibList/${pagination.page}/${pagination.limit}`
-    );
-    const data = await result.json();
+            }
 
-    if (data.success) {
-      console.log("lib data Games : ", data.data);
-      dispatch(setGames(data.data.games));
-      setData(data.data.games);
-    } else {
-      console.log(data.message);
-    }
-  };
 
-  React.useEffect(() => {
-    handleGetLibGameList();
-  }, [pagination, isFilter]);
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    };
 
-  return (
-    <>
-      <RandomGame />
-      <TenLastGame />
-      <h2 className="title">Liste des jeux dans la lib</h2>
+    const handleGetLibGameList = async () => {
 
-      <Filter
-        urlApiFilter={`${ADREESE_API}filterLibGame/`}
-        data={(value) => {
-          dispatch(setGames(value));
-          setData(value);
-        }}
-        setIsFilter={(f) => setIsFilter(f)}
-      />
-      <Search
-        placeholder="Search Game"
-        outPut={(event) => {
-          handleSearch(event);
-        }}
-      />
-      <LibGameList
-        data={data}
-        selectGame={(_game) => {
-          setIsVisble(true);
-          setModalInfo({
-            data: _game,
-            isVisble: true,
-            onClose: () => {
-              setModalInfo({ ...modalInfo, isVisble: true });
-              setIsVisble(false);
-            },
-          });
-        }}
-      />
-      <ModalInfoGameLib
-        _data={modalInfo.data}
-        _isVisible={isVisble}
-        _onClose={() => {
-          setIsVisble(false);
-        }}
-      />
-    </>
-  );
-};
+
+        const result = await fetch(ADREESE_API + `lib/gameLibList/${pagination.page}/${pagination.limit}`);
+        const data = await result.json();
+
+        if (data.success) {
+            console.log("lib data Games : ", data.data);
+            dispatch(setGames(data.data.games));
+            setData(data.data.games);
+
+
+        } else {
+
+            console.log(data.message);
+        }
+    };
+
+    React.useEffect(() => {
+        handleGetLibGameList();
+    }, [pagination, isFilter]);
+
+    return (
+        <>
+            {/*  <RandomGame /> */}
+            <TenLastGame />
+            <h2 className='title'>Liste des jeux dans la lib</h2>
+
+            <Filter
+                urlApiFilter={`${ADREESE_API}filterLibGame/`}
+                data={(value) => {
+                    dispatch(setGames(value));
+                    setData(value);
+                }}
+                setIsFilter={(f) => setIsFilter(f)}
+            />
+            <Search
+                placeholder="Search Game"
+                outPut={(event) => {
+                    handleSearch(event);
+
+                }}
+            />
+            <LibGameList data={data} selectGame={(_game) => {
+                setIsVisble(true);
+                setModalInfo(
+                    {
+                        data: _game,
+                        isVisble: true,
+                        onClose: () => {
+                            setModalInfo({ ...modalInfo, isVisble: true });
+                            setIsVisble(false);
+                        }
+                    }
+                )
+
+            }
+            } />
+            <ModalInfoGameLib
+                _data={modalInfo.data}
+                _isVisible={isVisble}
+                _onClose={() => {
+                    setIsVisble(false);
+                }}
+            />
+
+        </>
+    )
+
+}
+
 
 interface HomeScreenInterface {
   setScreen: React.Dispatch<React.SetStateAction<screenInterface>>;

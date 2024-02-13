@@ -464,6 +464,25 @@ export default function Table() {
           outPut={(value) => handleSearch(value)}
         />
       </div>
+            <div>
+                <Filter
+                    urlApiFilter={`${ADREESE_API}filterGame/`}
+                    data={(value) => {
+                        setData(value);
+                        /* setIsFilter(true); */
+                    }}
+                    setIsFilter={(f) => setIsFilter(f)}
+                />
+                <div>
+                    <Search
+                        placeholder={t("table.search.placeholder")}
+                        outPut={(value) => handleSearch(value)}
+                    />
+                    <Link to="/addGame">
+                        <button className="btnAddGame">{t("home.addGame")}</button>
+                    </Link>
+                </div>
+            </div>
 
       <div className="tableGame__content">
         {" "}
@@ -527,4 +546,56 @@ export default function Table() {
       />
     </div>
   );
+
+            <div>  {/* BTN ADD GAME */}
+
+                <table>
+                    <thead>
+                        <tr>
+                            {columns.map((column, index) => (
+                                index === 0 ? <th key={"action"} >{t("table.rows.action")}</th> :
+                                    <th key={column.key}>{t(`table.rows.${column.title}`)}</th>
+
+                            ))}
+                        </tr>
+
+                    </thead>
+                    <tbody onScroll={
+                        (event) => {
+                            scrollDection(event);
+                        }
+                    }>
+                        {data.map((row) => (
+
+                            <tr key={row.pid} /* onClick={() => onRowClick(row)} */>
+
+                                {columns.map((column, index) => (
+                                    <SpecilaColumn key={index + "lstC"} index={index} keyColumn={column.key} row={row} />
+                                ))}
+                            </tr>
+
+
+
+                        ))}
+                        {
+                            loading ? <tr><td>{t("global.loading")}</td></tr> : null
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <Alert
+                isShowAlert={alert.isShowAlert}
+                typeMachine={0}
+                title={t(alert.title)}
+                message={t(alert.message)}
+                submit={() => { alert.submit() }}
+                cancel={() => { alert.cancel() }}
+            />
+            <EditGameInfo
+                isShow={editGameInfo.isShow}
+                rowData={editGameInfo.rowData}
+                onClose={() => setEditGameInfo(defaultDataEdit)}
+            />
+        </div>
+    );
 }
