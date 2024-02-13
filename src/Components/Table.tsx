@@ -449,22 +449,7 @@ export default function Table() {
   return (
     <div className="tableGame">
       <h1 className="tableGame__title">{title}</h1>
-
-      <div>
-        <Filter
-          urlApiFilter={`${ADREESE_API}filterGame/`}
-          data={(value) => {
-            setData(value);
-            /* setIsFilter(true); */
-          }}
-          setIsFilter={(f) => setIsFilter(f)}
-        />
-        <Search
-          placeholder={t("table.search.placeholder")}
-          outPut={(value) => handleSearch(value)}
-        />
-      </div>
-            <div>
+            <div className="tableGame__contentFilter">
                 <Filter
                     urlApiFilter={`${ADREESE_API}filterGame/`}
                     data={(value) => {
@@ -473,23 +458,18 @@ export default function Table() {
                     }}
                     setIsFilter={(f) => setIsFilter(f)}
                 />
-                <div>
+                <div className="tableGame__contentFilter_search">
                     <Search
                         placeholder={t("table.search.placeholder")}
                         outPut={(value) => handleSearch(value)}
                     />
-                    <Link to="/addGame">
-                        <button className="btnAddGame">{t("home.addGame")}</button>
+                    <Link to="/addGame" className="btnAddGame">
+                        <button className="btn ">{t("home.addGame")}</button>
                     </Link>
                 </div>
             </div>
 
       <div className="tableGame__content">
-        {" "}
-        {/* BTN ADD GAME */}
-        <Link to="/addGame">
-          <button className="btnAddGame">{t("home.addGame")}</button>
-        </Link>
         <table className="tableGame__content_table">
           <thead>
             <tr>

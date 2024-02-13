@@ -1,29 +1,23 @@
-.filter{
-    display: block;
-    span{
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: #000;
-        text-align:left ;
+.filter {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  h2 {
+    font-family: "Bungee";
+    font-size: 2.4rem;
+  }
+  span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    text-align: left;
+  }
+  &__contenaire {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    button {
+      transform: skew(-25deg, -2deg);
     }
-    &__contenaire{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin: 5px 10px 20px 10px;
-        button{
-            padding: 10px 20px;
-            border: none;
-            background-color: #000;
-            color: #fff;
-            font-size: 1.5rem;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 5px;
-            &:hover{
-                background-color: #fff;
-                color: #000;
-            }
-        }
-    }
+  }
 }

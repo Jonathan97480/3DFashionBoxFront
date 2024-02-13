@@ -99,7 +99,7 @@ const FashionBoxGames = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="noScroll">
+    <div className="noScroll max-w">
       <Table />
     </div>
   );
