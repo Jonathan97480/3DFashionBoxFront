@@ -182,7 +182,7 @@ const LibGames = () => {
 
     return (
         <>
-            <RandomGame />
+            {/*  <RandomGame /> */}
             <TenLastGame />
             <h2 className='title'>Liste des jeux dans la lib</h2>
 

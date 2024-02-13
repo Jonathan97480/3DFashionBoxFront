@@ -410,19 +410,20 @@ export default function Table() {
                     }}
                     setIsFilter={(f) => setIsFilter(f)}
                 />
-                <Search
-                    placeholder={t("table.search.placeholder")}
-                    outPut={(value) => handleSearch(value)}
-                />
-
-
+                <div>
+                    <Search
+                        placeholder={t("table.search.placeholder")}
+                        outPut={(value) => handleSearch(value)}
+                    />
+                    <Link to="/addGame">
+                        <button className="btnAddGame">{t("home.addGame")}</button>
+                    </Link>
+                </div>
             </div>
 
 
             <div>  {/* BTN ADD GAME */}
-                <Link to="/addGame">
-                    <button className="btnAddGame">{t("home.addGame")}</button>
-                </Link>
+
                 <table>
                     <thead>
                         <tr>

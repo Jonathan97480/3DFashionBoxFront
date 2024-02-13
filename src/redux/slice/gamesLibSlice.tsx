@@ -36,8 +36,8 @@ export const GamesLibStatuSlice = createSlice({
 
 export const { setGames, setError, clearGames } = GamesLibStatuSlice.actions
 
-export const selectGames = (state: any) => state.Games.games;
-export const selectGamesLoading = (state: any) => state.Games.loading;
+export const selectGames = (state: any) => state.GamesLib.games as libGameInterface[];
+export const selectGamesLoading = (state: any) => state.GamesLib.loading;
 
 
 export default GamesLibStatuSlice.reducer

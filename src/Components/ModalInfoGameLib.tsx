@@ -12,7 +12,7 @@ import ps1 from '../assets/images/icon/ps1.png';
 import arcade from '../assets/images/icon/arcade.png';
 import { useTranslation } from "react-multi-lang";
 import { useDispatch, useSelector } from "react-redux"
-import { setGames } from "../redux/slice/gamesLibSlice";
+import { setGames, selectGames } from "../redux/slice/gamesLibSlice";
 
 
 
@@ -24,7 +24,9 @@ interface ModalInfoGameLibProps {
 
 
 const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps) => {
-    const { title_en, emu_id, mp4name, screenshots } = _data;
+    const [data, setData] = useState<libGameInterface>({} as libGameInterface);
+    const [loading, setLoading] = useState(false);
+
     const [isVisible, setIsVisible] = useState(_isVisible)
     const BASE_VIDEO_URL = 'http://83.198.193.155:8080/video/';
     const BASE_API_URL = "http://83.198.193.155:8080/api/";
@@ -33,6 +35,7 @@ const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps
 
     useEffect(() => {
         setIsVisible(_isVisible);
+        setData(_data);
 
         console.log("ModalInfoGameLibProps", _data, _isVisible, _onClose);
 
@@ -53,7 +56,7 @@ const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps
             });
         }
 
-    }, [_data, _isVisible, _onClose]);
+    }, [data, _isVisible, _onClose]);
 
 
 
@@ -117,29 +120,34 @@ const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps
     };
 
     const handleScrapPicture = async () => {
-        const response = await fetch(BASE_API_URL + 'scrapScrennshot/' + emu_id);
+        if (loading) return;
+        setLoading(true);
+        const response = await fetch(BASE_API_URL + 'scrapScrennshot/' + data.emu_id);
         const dataApi = await response.json();
         if (dataApi.success) {
-            alert("Picture scrapped");
+            console.log("dataApi", dataApi);
+            /*  alert("Picture scrapped"); */
+            setData(dataApi.data);
+            setLoading(false);
+
+            /* const games: libGameInterface[] = useSelector(selectGames); */
+
+            /*   games.map((game: libGameInterface, index) => {
+                  if (game.pid === data.pid) {
+                      game.screenshots = dataApi.data.screenshots;
+                    
+                      return/ dispatch(setGames(games)); 
+                  }
+  
+  
+                  if (index === games.length - 1) {
+                      console.error("le jeu renvoyer par l'api nes pas present dans le store redux");
+                      alert("Error to scrap picture");
+                  }
+              }) */
 
 
-            /*      const games: libGameInterface[] = useSelector((state: any) => state.gamesLib.games);
-              
-                 games.map((game: libGameInterface, index) => {
-                     if (game.pid === _data.pid) {
-                         game.screenshots = dataApi.data.screenshots;
-                         return dispatch(setGames(games));
-                     }
-     
-                     
-                     if (index === games.length - 1) {
-                         console.error("le jeu renvoyer par l'api nes pas present dans le store redux");
-                         alert("Error to scrap picture");
-                     }
-                 })
-      */
-
-            dispatch(setGames(dataApi.data.games));
+            /*  dispatch(setGames(dataApi.data.games)); */
         } else {
             alert("Error to scrap picture");
         }
@@ -154,7 +162,7 @@ const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps
 
         <div className="modalLibInfoGame">
             <div className="modalLibInfoGame__header" >
-                <h1 className="modalLibInfoGame__header_title">{title_en}</h1>
+                <h1 className="modalLibInfoGame__header_title">{data.title_en}</h1>
                 <button className="modalLibInfoGame__header_btlCloseModal" onClick={
                     () => {
                         setIsVisible(false);
@@ -165,7 +173,7 @@ const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps
             </div>
             <div className="modalLibInfoGame__body">
                 <div className="modalLibInfoGame__body_cover">
-                    <img src={screenshots} alt={title_en + '_picture'} />
+                    <img src={data.screenshots} alt={data.title_en + '_picture'} />
                     <button
                         onClick={
                             () => {
@@ -176,10 +184,10 @@ const ModalInfoGameLib = ({ _data, _isVisible, _onClose }: ModalInfoGameLibProps
 
                 </div>
                 <span className="modalLibInfoGame__body_machine">
-                    <p>{getEmuName(emu_id)}</p>
-                    <img src={handleSelectIconMachine(emu_id)} alt={title_en + '_icon_machine'} />
+                    <p>{getEmuName(data.emu_id)}</p>
+                    <img src={handleSelectIconMachine(data.emu_id)} alt={data.title_en + '_icon_machine'} />
                 </span>
-                <VideoPlayer url={BASE_VIDEO_URL + mp4name + '.mp4'} />
+                <VideoPlayer url={BASE_VIDEO_URL + data.mp4name + '.mp4'} />
 
 
             </div>
