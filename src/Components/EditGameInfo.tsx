@@ -195,7 +195,7 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
                     </span>
                     <span>
                         <label>{t("category.title")}</label>
-                        <select name="category" value={data.category} onChange={(e) => handleDataChange("category", e.target.value)}>
+                        <select className="btn editGameInfo__btn" name="category" value={data.category} onChange={(e) => handleDataChange("category", e.target.value)}>
                             <option value="0">{t("category.list.0")}</option>
                             <option value='1'>{t("category.list.1")}</option>
                             <option value="2">{t("category.list.2")} </option>
@@ -227,28 +227,28 @@ export default function EditGameInfo({ rowData, isShow, onClose }: EditGameInfoP
 
                         <span>
                             <label>{t("global.game.loadTime")}</label>
-                            <input type="text" value={data.load_time} onChange={(e) => handleDataChange("load_time", e.target.value)} placeholder={t("global.game.placeholderLoadTime")} />
+                            <input className="btn editGameInfo__btn" type="text" value={data.load_time} onChange={(e) => handleDataChange("load_time", e.target.value)} placeholder={t("global.game.placeholderLoadTime")} />
                         </span>
                         <span>
                             <label>{t("global.game.gameTime")}</label>
-                            <input type="text" value={data.open_time} onChange={(e) => handleDataChange("open_time", e.target.value)} placeholder={t("global.game.placeholderTime")} />
+                            <input className="btn editGameInfo__btn" type="text" value={data.open_time} onChange={(e) => handleDataChange("open_time", e.target.value)} placeholder={t("global.game.placeholderTime")} />
                         </span>
                         <span>
                             <label>{t("global.game.dificulty")} </label>
-                            <input type="text" value={data.level} onChange={(e) => handleDataChange("level", e.target.value)} placeholder={t("global.game.placeholderDificulty")} />
+                            <input className="btn editGameInfo__btn" type="text" value={data.level} onChange={(e) => handleDataChange("level", e.target.value)} placeholder={t("global.game.placeholderDificulty")} />
                         </span>
                         <span>
                             <label>{t("global.game.numberCredit")} </label>
-                            <input type="text" value={data.life} onChange={(e) => handleDataChange("life", e.target.value)} placeholder={t("global.game.placeholderNumberCredit")} />
+                            <input className="btn editGameInfo__btn" type="text" value={data.life} onChange={(e) => handleDataChange("life", e.target.value)} placeholder={t("global.game.placeholderNumberCredit")} />
                         </span>
                         <span>
                             <label>{t("global.game.titleGameOtherLang")} </label>
                             <span>
-                                <input type="text" value={data.title_jp} onChange={(e) => handleDataChange("title_jp", e.target.value)} placeholder={t("global.game.placeholderJapan")} />
-                                <input type="text" value={data.title_cn} onChange={(e) => handleDataChange("title_cn", e.target.value)} placeholder={t("global.game.placeholderChinese")} />
-                                <input type="text" value={data.title_tw} onChange={(e) => handleDataChange("title_tw", e.target.value)} placeholder={t("global.game.placeholderTaiwan")} />
-                                <input type="text" value={data.title_ko} onChange={(e) => handleDataChange("title_ko", e.target.value)} placeholder={t("global.game.placeholderKorean")} />
-                                <input type="text" value={data.title_es} onChange={(e) => handleDataChange("title_es", e.target.value)} placeholder={t("global.game.placeholderEspagnol")} />
+                                <input className="btn editGameInfo__btn" type="text" value={data.title_jp} onChange={(e) => handleDataChange("title_jp", e.target.value)} placeholder={t("global.game.placeholderJapan")} />
+                                <input className="btn editGameInfo__btn" type="text" value={data.title_cn} onChange={(e) => handleDataChange("title_cn", e.target.value)} placeholder={t("global.game.placeholderChinese")} />
+                                <input className="btn editGameInfo__btn" type="text" value={data.title_tw} onChange={(e) => handleDataChange("title_tw", e.target.value)} placeholder={t("global.game.placeholderTaiwan")} />
+                                <input className="btn editGameInfo__btn" type="text" value={data.title_ko} onChange={(e) => handleDataChange("title_ko", e.target.value)} placeholder={t("global.game.placeholderKorean")} />
+                                <input className="btn editGameInfo__btn" type="text" value={data.title_es} onChange={(e) => handleDataChange("title_es", e.target.value)} placeholder={t("global.game.placeholderEspagnol")} />
                             </span>
                         </span>
 

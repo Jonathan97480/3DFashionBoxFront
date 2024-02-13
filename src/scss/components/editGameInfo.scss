@@ -1,6 +1,5 @@
 /* Style du conteneur modal */
 .editGameInfo{
-   
         position: fixed;
         top: 50%;
         left: 50%;
@@ -14,8 +13,6 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
         }
- 
-
         /* Style du titre */
 
 
@@ -94,6 +91,8 @@
             }
 
         }
-    
+    &__btn{
+      transform: skew(-25deg, -1deg);
+    }
     
 }
