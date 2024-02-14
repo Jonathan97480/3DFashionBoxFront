@@ -1,24 +1,24 @@
-:root{
- 
-    scroll-padding-top: 11rem;
+:root {
+  scroll-padding-top: 11rem;
   /* Variables css */
-  --color-primary: #F8F7F9;
-  --color-secondary: #050517;
-  --color-tertiary: #22AED1;
-  --bk-color-primary: #0A2239;
-  --bk-color-secondary: #373F51;
-  --bk-color-tertiary: #F8F7F9;
-  --error-color-primary: #EE4848;
-  --success-color-primary: #74E994;
-  
-   @keyframes loaderAnimation{
-       0%{ 
-          -webkit-transform: rotate(0deg); 
-          tranform: rotate(0deg);
-      }
-      100%{ 
-          -webkit-transform: rotate(360deg); 
-          tranform: rotate(360deg);
-      }
+  --bkg-primary-color: rgba(255, 255, 255, 0.5);
+  --bkg-secondary-color: rgba(0, 0, 0, 0.3);
+  --txt-primary-color: rgba(255, 255, 255, 0.58);
+  --scroll-primary-color: #ff0000 transparent;
+  --txt-secondary-color: #ff0000;
+  --txt-tertiary-color: #fff;
+  --border-primary-color: #ff0000;
+  --error-color-primary: #ee4848;
+  --success-color-primary: #74e994;
+
+  @keyframes loaderAnimation {
+    0% {
+      -webkit-transform: rotate(0deg);
+      tranform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+      tranform: rotate(360deg);
     }
   }
+}

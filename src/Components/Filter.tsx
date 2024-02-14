@@ -52,7 +52,7 @@ const Filter = ({ urlApiFilter, data, setIsFilter }: FilterInterface) => {
                 {
                     Object.keys(filter).map((key) => (
 
-                        <button key={key} onClick={() => handleFilter(parseInt(key))}>{t("table.filter." + filter[key as unknown as keyof typeof filter])}</button>
+                        <button className="btn" key={key} onClick={() => handleFilter(parseInt(key))}>{t("table.filter." + filter[key as unknown as keyof typeof filter])}</button>
                     ))
                 }
             </div>

@@ -20,6 +20,8 @@
 @import 'utils/margin';
 @import 'utils/pading';
 @import 'utils/texte';
+@import 'utils/noScroll';
+@import 'utils/btn';
 
 //component
 @import 'components/alert';
@@ -36,6 +38,7 @@
 
 
 //page
+@import 'page/home';
 
 /* @import 'page/home';
 @import 'page/404';
